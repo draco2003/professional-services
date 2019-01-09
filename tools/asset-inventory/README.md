@@ -76,7 +76,7 @@ The fastest way to Get data into BigQuery is to invoke the export resources to G
     export LOAD_TIME=`date -Is`
     export JOB_NAME=cloud-asset-inventory-import-`echo $LOAD_TIME | tr : - | tr '[:upper:]' '[:lower:]'`
     export PROJECT=`gcloud config get-value project`
-    gcloud dataflow jobs run $JOB_NAME  --gcs-location gs://professional-services-tools-asset-inventory/latest/import_pipeline --parameters="input=$BUCKET,stage=$BUCKET/stage,load_time=$LOAD_TIME,group_by=ASSET_TYPE,dataset=$DATASET,write_disposition=WRITE_APPEND"
+    gcloud dataflow jobs run $JOB_NAME  --staging-location="$BUCKET/dataflow-staging" --gcs-location gs://professional-services-tools-asset-inventory/latest/import_pipeline --parameters="input=$BUCKET/*.json,stage=$BUCKET/stage,load_time=$LOAD_TIME,group_by=ASSET_TYPE,dataset=$DATASET,write_disposition=WRITE_APPEND"
     ```
 
     This will output a job id like `2019-01-07_13_48_24-2706414343179069654`
