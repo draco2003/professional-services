@@ -37,7 +37,7 @@ The fastest way to Get data into BigQuery is to invoke the export resources to G
 1. Export both the resource and iam_policy assets of a project or organization to the bucket.  If you have organization level access and wish to export all resources within the organization then define the parent to be:
 
     ```
-    export PARENT="--organization [your-organization-id]
+    export PARENT="--organization [your-organization-id]"
     ```
 
     or if you only have project level access and wish to export all resources within the project then
@@ -49,8 +49,8 @@ The fastest way to Get data into BigQuery is to invoke the export resources to G
     We'll need to be running gcloud version __228.0.0 or later. (alpha 2018.11.09)__ Ensure you have the alpha components for gcloud installed by running:
 
     ```
-    gcloud components alpha install
-    gcloud components upddate
+    gcloud components install alpha
+    gcloud components update
     ```
 
     Now perform the export:
